@@ -32,8 +32,8 @@
 		2BB04B332D5565BF00DB9A3F = {
 			isa = PBXGroup;
 			children = (
-				2BB04B3E2D5565BF00DB9A3F /* TiktokTutorial */,
 				2BB04B3D2D5565BF00DB9A3F /* Products */,
+				2BB04B3E2D5565BF00DB9A3F /* TiktokTutorial */,
 			);
 			sourceTree = "<group>";
 		};

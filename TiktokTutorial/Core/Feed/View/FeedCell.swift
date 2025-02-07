@@ -5,14 +5,14 @@
 //  Created by Chirag Kular on 2/6/25.
 //
 
+import AVKit
 import SwiftUI
 
 struct FeedCell: View {
     let post: Post
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(.pink)
+            VideoPlayer(player: AVPlayer(url: URL(string: post.videoURL)!))
                 .containerRelativeFrame([.horizontal, .vertical])
 
             VStack {
@@ -81,5 +81,5 @@ struct FeedCell: View {
 }
 
 #Preview {
-    FeedCell(post: Post(id: NSUUID().uuidString, videoURL: ""))
+    FeedCell(post: Post(id: NSUUID().uuidString, videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"))
 }
