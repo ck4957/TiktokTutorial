@@ -21,7 +21,7 @@ struct FeedCell: View {
         ZStack {
             CustomVideoPlayer(player: player)
                 .containerRelativeFrame([.horizontal, .vertical])
-            
+
             VStack {
                 Spacer()
                 HStack(alignment: .bottom) {
@@ -32,9 +32,9 @@ struct FeedCell: View {
                     }
                     .foregroundStyle(.white)
                     .font(.subheadline)
-                    
+
                     Spacer()
-                    
+
                     VStack(spacing: 28) {
                         Circle()
                             .frame(width: 48, height: 48)
@@ -84,6 +84,18 @@ struct FeedCell: View {
                 .padding(.bottom, 80)
             }
             .padding()
+        }
+        .onTapGesture {
+            switch player.timeControlStatus {
+                case .paused:
+                    player.play()
+                case .playing:
+                    player.pause()
+                case .waitingToPlayAtSpecifiedRate:
+                    break
+                @unknown default:
+                    break
+            }
         }
     }
 }
