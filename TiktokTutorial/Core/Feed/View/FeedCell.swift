@@ -12,16 +12,16 @@ struct FeedCell: View {
     let post: Post
     var player: AVPlayer
 
-    init(post: Post) {
+    init(post: Post, player: AVPlayer) {
         self.post = post
-        self.player = AVPlayer(url: URL(string: post.videoURL)!)
+        self.player = player
     }
 
     var body: some View {
         ZStack {
             CustomVideoPlayer(player: player)
                 .containerRelativeFrame([.horizontal, .vertical])
-
+            
             VStack {
                 Spacer()
                 HStack(alignment: .bottom) {
@@ -32,9 +32,9 @@ struct FeedCell: View {
                     }
                     .foregroundStyle(.white)
                     .font(.subheadline)
-
+                    
                     Spacer()
-
+                    
                     VStack(spacing: 28) {
                         Circle()
                             .frame(width: 48, height: 48)
@@ -85,12 +85,9 @@ struct FeedCell: View {
             }
             .padding()
         }
-        .onAppear {
-//            player.play()
-        }
     }
 }
 
 #Preview {
-    FeedCell(post: Post(id: NSUUID().uuidString, videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"))
+    FeedCell(post: Post(id: NSUUID().uuidString, videoURL: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"), player: AVPlayer())
 }
